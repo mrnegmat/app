@@ -1,10 +1,9 @@
 FROM tomcat:latest
-RUN apt update
-RUN apt install -y default-jdk
-RUN mkdir -p /build
-WORKDIR /build
-COPY boxfuse-sample-java-war-hello/pom.xml /build
-COPY boxfuse-sample-java-war-hello/src /build/src
-RUN mvn clean package
-RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war /usr/local/tomcat/webapps
-EXPOSE 8080
+RUN apt update && \
+    apt install -y maven git default-jdk && \
+    mkdir $CATALINA_HOME/build
+WORKDIR $CATALINA_HOME/build
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git && \
+    mvn package -f boxfuse-sample-java-war-hello/pom.xml && \
+    mv boxfuse-sample-java-war-hello/target/hello-1.0.war $CATALINA_HOME/webapps/hello.war
+
