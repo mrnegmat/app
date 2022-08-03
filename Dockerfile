@@ -1,6 +1,6 @@
 FROM tomcat:latest
 RUN apt update
-RUN apt install -y maven default-jdk
+RUN apt install -y default-jdk
 RUN mkdir -p /build
 WORKDIR /build
 COPY boxfuse-sample-java-war-hello/pom.xml /build
