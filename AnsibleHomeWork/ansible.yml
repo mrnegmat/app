@@ -1,6 +1,6 @@
 ---
 - name: install nginx
-  hosts: web
+  hosts: demo3
   become: yes
 
   tasks:
