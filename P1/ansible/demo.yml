@@ -1,0 +1,45 @@
+---
+- name: install nginx
+  hosts: web
+  become: yes
+
+  tasks:
+    - name: Ensure nginx package is present
+      apt:
+        name: apache2
+        state: present
+
+    - name: Ensure index.html is present
+      copy:
+        src: index.html
+        dest: /var/www/html
+
+    - name: Ensure nginx is started
+      service:
+        name: nginx
+        state: started
+
+- name: install db & apache2
+  hosts: db
+  become: yes
+
+  tasks:
+    - name: Ensure postrgesql package is present
+      apt:
+        name: postgresql
+        state: present
+
+    - name: Ensure apache package is present
+      apt:
+        name: apache2
+        state: present
+    
+    - name: Ensure httpd is started
+      service:
+        name: httpd
+        state: started
+
+
+
+
+
