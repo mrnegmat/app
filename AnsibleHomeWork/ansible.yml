@@ -9,11 +9,6 @@
         name: default-jdk
         state: present
 
-#    - name: Ensure default-jdk is started
-#     service:
-#       name: java
-#       state: started
-
     - name: Ensure maven package is present
       apt:
         name: maven
@@ -30,3 +25,10 @@
         dest: /home/user/appgit
         clone: yes
         update: yes
+
+    - name: MVN packaging
+      shell: 
+        cmd: mvn package
+        chdir: /home/user/appgit
+
+        
