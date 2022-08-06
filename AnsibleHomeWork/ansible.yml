@@ -31,4 +31,14 @@
         cmd: mvn package
         chdir: /home/user/appgit
 
+- name: install tomcat
+  hosts: demo5
+  become: yes
+
+  tasks:
+    - name: Ensure tomcat package is present
+      apt:
+        name: tomcat9
+        state: present
+
         
