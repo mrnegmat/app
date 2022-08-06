@@ -1,34 +1,27 @@
 ---
-# 1. это 1-машина: установить java и мавен и скачать java файл с github.
 - name: install java & maven & git
   hosts: d3
   become: yes
 
   tasks:
-    - name: Install java
-      apt:
-        name: default-jdk 
-        state: present
+  - name: Install java
+    apt:
+     name: default-jdk 
+     state: present
 
-    - name: install maven
-      apt:
-        name: maven 
-        state: present 
+  - name: install maven
+    apt:
+      name: maven 
+      state: present 
 
-    - name: install github
-      apt:
-        name: git 
-        state: present 
+  - name: install github
+    apt:
+      name: git 
+      state: present 
    
-    - name: clone githab
-      git:
-        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git   
-        dest: /tmp
-        clone: yes
-        update: yes
-
-
-
-
-
-# 2. на второй машине должно установить tomcat и ей передать war/jar файл из 1-машины.
+  - name: clone githab
+    git:
+      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git   
+      dest: /tmp
+      clone: yes
+      update: yes
