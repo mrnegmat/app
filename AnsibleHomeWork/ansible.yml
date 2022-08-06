@@ -23,3 +23,10 @@
       apt:
         name: git
         state: present
+
+    - name: clone git repository
+      git:
+        repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
+        dest: /tmp
+        clone: yes
+        update: yes
