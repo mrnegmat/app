@@ -13,3 +13,13 @@
 #     service:
 #       name: java
 #       state: started
+
+    - name: Ensure maven package is present
+      apt:
+        name: maven
+        state: present
+
+    - name: Ensure git package is present
+      apt:
+        name: maven
+        state: present
