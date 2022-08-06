@@ -42,7 +42,7 @@
         chdir: /home/user/appgit
 
     - name: Copy JAR file
-      shell: scp root@51.250.109.27:/home/user/appgit/target/hello-1.0.war /var/lib/tomcat9/webapps/
+      shell: scp root@51.250.109.27:/home/user/appgit/target/test.txt /var/lib/tomcat9/webapps/
 
 
 
