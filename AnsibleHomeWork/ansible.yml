@@ -1,4 +1,14 @@
 ---
+- name: install tomcat
+  hosts: demo5
+  become: yes
+
+  tasks:
+    - name: Ensure tomcat package is present
+      apt:
+        name: tomcat9
+        state: present
+
 - name: install nginx
   hosts: demo3
   become: yes
@@ -31,14 +41,9 @@
         cmd: mvn package
         chdir: /home/user/appgit
 
-- name: install tomcat
-  hosts: demo5
-  become: yes
+    - name: Copy JAR file
+      shell: scp root@51.250.109.27:/home/user/appgit/target/hello-1.0.war /var/lib/tomcat9/webapps/
 
-  tasks:
-    - name: Ensure tomcat package is present
-      apt:
-        name: tomcat9
-        state: present
+
 
         
