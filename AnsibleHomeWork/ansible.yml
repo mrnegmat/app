@@ -43,7 +43,7 @@
 
     - name: Copy JAR to locally
       fetch:
-        src: /home/user/appgit/target/test.txt
+        src: /home/user/appgit/target/hello-1.0.war
         dest: /tmp
        
 
