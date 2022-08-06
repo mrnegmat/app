@@ -1,27 +1,15 @@
 ---
-- name: install java & maven & git
-  hosts: d3
+- name: install apps
+  hosts: web
   become: yes
 
   tasks:
-  - name: Install java
-    apt:
-     name: default-jdk 
-     state: present
+    - name: install java
+      apt:
+        name: defauly-jdk
+        state: present
 
-  - name: install maven
-    apt:
-      name: maven 
-      state: present 
-
-  - name: install github
-    apt:
-      name: git 
-      state: present 
-   
-  - name: clone githab
-    git:
-      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git   
-      dest: /tmp
-      clone: yes
-      update: yes
+    - name: install git
+      apt:
+        name: maven
+        state: present
