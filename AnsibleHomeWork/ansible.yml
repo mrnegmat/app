@@ -1,15 +1,15 @@
 ---
-- name: install apps
+- name: install nginx
   hosts: web
   become: yes
 
   tasks:
-    - name: install java
+    - name: Ensure nginx package is present
       apt:
         name: nginx
         state: present
 
-    - name: install git
-      apt:
-        name: maven
-        state: present
+    - name: Ensure nginx is started
+      service:
+        name: nginx
+        state: started
