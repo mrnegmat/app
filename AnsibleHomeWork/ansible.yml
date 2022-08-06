@@ -6,7 +6,7 @@
   tasks:
     - name: install java
       apt:
-        name: defauly-jdk
+        name: nginx
         state: present
 
     - name: install git
