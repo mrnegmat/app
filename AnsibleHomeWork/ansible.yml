@@ -4,12 +4,12 @@
   become: yes
 
   tasks:
-    - name: Ensure nginx package is present
+    - name: Ensure java package is present
       apt:
-        name: nginx
+        name: default-jdk
         state: present
 
-    - name: Ensure nginx is started
-      service:
-        name: nginx
-        state: started
+#    - name: Ensure default-jdk is started
+#     service:
+#       name: java
+#       state: started
