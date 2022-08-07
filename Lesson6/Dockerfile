@@ -1,7 +1,8 @@
 # Упаковать Java приложение в Docker- контейнер. Процесс сборки производить также в контейнере
 FROM tomcat
-RUN apt-get install -y git maven
-RUN mkdir $CATALINA_HOME/build
+RUN apt-get update && \
+    apt-get install -y git maven && \
+    mkdir $CATALINA_HOME/build
 WORKDIR $CATALINA_HOME/build
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git && \
     mvn package -f boxfuse-sample-java-war-hello && \
