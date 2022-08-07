@@ -1,4 +1,4 @@
-FROM Ubuntu:20.04
+FROM ubuntu:20.04
 RUN apt-get update -y
 RUN apt-get install -y default-jdk
 RUN apt-get install -y maven
