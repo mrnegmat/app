@@ -1,1 +1,6 @@
 ---
+version: '2'
+
+# 1-сервис. сборка java maven/mvn git 
+# 2-сервис. tomcat
+
