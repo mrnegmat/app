@@ -1,5 +1,5 @@
 # Упаковать Java приложение в Docker- контейнер. 
-FROM alpine:latest
+FROM ubuntu:latest
 RUN apt update && apt install -y git maven tomcat9
 EXPOSE 8080
 ENV CATALINA_BASE=/var/lib/tomcat9
