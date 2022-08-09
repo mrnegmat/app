@@ -5,7 +5,7 @@ RUN mkdir $CATALINA_HOME/build
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
 RUN chmod 777 boxfuse-sample-java-war-hello 
 RUN cd boxfuse-sample-java-war-hello 
-RUN mvn package 
+RUN mvn package -e
 RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war $CATALINA_HOME//webapps
 
 
