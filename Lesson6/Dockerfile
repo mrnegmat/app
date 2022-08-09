@@ -1,14 +1,16 @@
-FROM ubuntu:20.04
-RUN apt-get update -y
-RUN apt-get install -y default-jdk
-RUN apt-get install -y maven
-RUN apt-get install -y tomcat9
-EXPOSE 8080
-ENV CATALINA_HOME=/usr/share/tomcat9
-ENV CATALINA_BASE=/var/lib/tomcat9
-ENV CATALINA_TMPDIR=/tmp
-RUN apt-get install -y git
-RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
-RUN cd boxfuse-sample-java-war-hello && mvn package
-RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war /var/lib/tomcat9/webapps/
-CMD ["usr/share/tomcat9/bin/cataline.sh","run"]
+# Упаковать Java приложение в Docker- контейнер. Процесс сборки производить также в контейнере
+FROM tomcat:latest
+RUN apt-get update && \
+    apt-get install -y git maven default-jdk && \
+    mkdir $CATALINA_HOME/build
+WORKDIR $CATALINA_HOME/build
+RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
+RUN cd boxfuse-sample-java-war-hello && mvn package 
+RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war $CATALINA_HOME/webapps/
+
+
+#CATALINA_BASE:   /usr/local/tomcat
+#CATALINA_HOME:   /usr/local/tomcat
+#CATALINA_TMPDIR: /usr/local/tomcat/temp
+#JRE_HOME:        /usr
+#CLASSPATH:       /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar
