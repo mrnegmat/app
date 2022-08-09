@@ -4,8 +4,7 @@ RUN apt-get update && apt-get install -y git maven default-jdk
 RUN mkdir $CATALINA_HOME/build
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
 RUN chmod 777 boxfuse-sample-java-war-hello 
-RUN cd boxfuse-sample-java-war-hello 
-RUN mvn package -e
+RUN mvn package -f boxfuse-sample-java-war-hello/pom.xml
 RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war $CATALINA_HOME//webapps
 
 
