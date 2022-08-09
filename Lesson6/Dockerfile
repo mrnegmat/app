@@ -1,7 +1,7 @@
 # Упаковать Java приложение в Docker- контейнер. 
 FROM ubuntu:latest
-RUN apt update && apt install -y git maven tomcat9
-EXPOSE 8080
+RUN apt-get update && apt-get install -y git maven tomcat9
+EXPOSE 5000
 ENV CATALINA_BASE=/var/lib/tomcat9
 ENV CATALINA_HOME=/usr/share/tomcat9
 ENV CATALINA_TMPDIR=/tmp
