@@ -6,7 +6,7 @@ RUN cd /home/myFolder
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
 RUN chmod 777 boxfuse-sample-java-war-hello 
 RUN cd boxfuse-sample-java-war-hello 
-RUN mvn package 
+RUN mvn package -e
 RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war /var/lib/tomcat9/webapps/
 
 
