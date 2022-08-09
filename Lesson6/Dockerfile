@@ -1,12 +1,12 @@
-# Упаковать Java приложение в Docker- контейнер. Процесс сборки производить также в контейнере
+# Упаковать Java приложение в Docker- контейнер. 
 FROM tomcat:latest
 RUN apt-get update && apt-get install -y git maven default-jdk 
-WORKDIR /usr/local/tomcat
+RUN mkdir $CATALINA_HOME/build
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
 RUN chmod 777 boxfuse-sample-java-war-hello 
 RUN cd boxfuse-sample-java-war-hello 
-RUN mvn package -e
-RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war /usr/local/tomcat/webapps
+RUN mvn package 
+RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war $CATALINA_HOME//webapps
 
 
 #CATALINA_BASE:   /usr/local/tomcat
