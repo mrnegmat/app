@@ -1,11 +1,15 @@
 # Упаковать Java приложение в Docker- контейнер. 
-FROM tomcat:latest
-RUN apt-get update && apt-get install -y git maven default-jdk 
-RUN mkdir $CATALINA_HOME/build
+FROM ubuntu:20.04
+RUN apt-get update && apt-get install -y git maven default-jdk tomcat9
+EXPOSE 8080
+ENV CATALINA_BASE=/var/lib/tomcat9
+ENV CATALINA_HOME=/usr/share/tomcat9
+ENV CATALINA_TMPDIR=/tmp
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
 RUN chmod 777 boxfuse-sample-java-war-hello 
-RUN mvn package -e -f boxfuse-sample-java-war-hello/pom.xml
-RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war $CATALINA_HOME//webapps
+RUN cd boxfuse-sample-java-war-hello && mvn package 
+RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war /var/lib/tomcat9/webapps
+CMD ["/usr/share/tomcat9/bin/cataline.sh","run"]
 
 
 #CATALINA_BASE:   /usr/local/tomcat
