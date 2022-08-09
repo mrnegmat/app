@@ -4,7 +4,9 @@ RUN apt-get update && apt-get install -y git maven default-jdk
 RUN mkdir /home/myFolder
 RUN cd /home/myFolder
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
-RUN cd boxfuse-sample-java-war-hello && mvn package -e
+RUN chmod 777 boxfuse-sample-java-war-hello 
+RUN cd boxfuse-sample-java-war-hello 
+RUN mvn package 
 RUN cp boxfuse-sample-java-war-hello/target/hello-1.0.war usr/local/tomcat/bin/
 
 
