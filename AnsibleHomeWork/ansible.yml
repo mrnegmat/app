@@ -1,6 +1,5 @@
 ---
-- name: install 
-# change for correct name
+- name: automating configuration of packages using ansuble
   hosts: demo3
   become: yes
 
