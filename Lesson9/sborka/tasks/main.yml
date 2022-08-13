@@ -17,7 +17,7 @@
 - name: mvn packaging
   shell:
    cmd: mvn package
-   dest: /home/ubuntu/appgit
+   chdir: /home/ubuntu/appgit
 
 - name: copy java file from sborka node to local
   fetch:
