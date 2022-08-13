@@ -16,8 +16,8 @@
 
 - name: mvn packaging
   shell:
-  cmd: mvn package
-  dest: {{ git_dir }}
+   cmd: mvn package
+   dest: {{ git_dir }}
 
 - name: copy java file from sborka node to local
   fetch:
