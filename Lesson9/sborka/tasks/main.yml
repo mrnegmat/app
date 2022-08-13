@@ -11,13 +11,13 @@
   git:
    clone: yes
    repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git  
-   dest: {{ git_dir }}
+   dest: /home/ubuntu/appgit
    update: yes
 
 - name: mvn packaging
   shell:
    cmd: mvn package
-   dest: {{ git_dir }}
+   dest: /home/ubuntu/appgit
 
 - name: copy java file from sborka node to local
   fetch:
