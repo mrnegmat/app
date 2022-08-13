@@ -1,6 +1,4 @@
 ---
-version: '2'
+- name: install 
 
-# 1-сервис. сборка java maven/mvn git 
-# 2-сервис. tomcat
 
