@@ -9,10 +9,10 @@
 
 - name: clone git repository
   git:
-   repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git  
-   dest: {{ git_dir }}
-   clone: yes
-   update: yes
+    repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git  
+    dest: {{ git_dir }}
+    clone: yes
+    update: yes
 
 - name: mvn packaging
   shell:
