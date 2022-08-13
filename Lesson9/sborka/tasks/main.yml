@@ -23,3 +23,4 @@
   fetch:
    src: /home/ubuntu/appgit/target/hello-1.0.war 
    dest: /tmp/hello-1.0.war 
+   flat: yes
