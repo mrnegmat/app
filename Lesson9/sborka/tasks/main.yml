@@ -19,6 +19,7 @@
   cmd: mvn package
   chdir: /home/ubuntu/appgit
 
-- name: Transfer java file to tomcat server
-  synchronize 
-   
+- name: copy java file from sborka node to local
+  fetch:
+   src: /home/user/appgit/target/hello-1.0.war 
+   dest: /tmp
