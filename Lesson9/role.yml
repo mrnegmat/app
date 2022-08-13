@@ -1,0 +1,14 @@
+---
+- name: sborka java application 
+  hosts: sborka
+  become: yes
+
+  roles:
+   - sborka
+
+- name: deploy java application
+  hosts: deploy
+  become: yes
+
+  roles:
+   - deploy
