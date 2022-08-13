@@ -1,2 +1,3 @@
 ---
 # vars file for sborka
+git_dir: /home/ubuntu/appgit
