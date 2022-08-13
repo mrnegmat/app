@@ -1,7 +1,7 @@
 ---
 # tasks file for sborka
 - name: install java maven git packages
-  apt: name={{item}} state:present
+  apt-get: name={{item}} state:present
   with_items: 
    - default-jdk
    - maven
