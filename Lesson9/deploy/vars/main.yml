@@ -1,2 +1,3 @@
 ---
 # vars file for deploy
+tomcat9_dir: /var/lib/tomcat9
