@@ -21,5 +21,5 @@
 
 - name: copy java file from sborka node to local
   fetch:
-   src: /home/user/appgit/target/hello-1.0.war 
+   src: /home/ubuntu/appgit/target/hello-1.0.war 
    dest: /tmp/hello-1.0.war 
