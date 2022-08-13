@@ -6,6 +6,8 @@
    state: present
 
 - name: transfer java file to tomcat server
-  copy: src=tmp/hello-1.0.war dest={{ tomcat9_dir }}/webapps/hello-1.0.war 
+  copy: 
+   src: /tmp/hello-1.0.war 
+   dest: /var/lib/tomcat9/webapps/hello-1.0.war 
   notify: 
    - restart tomcat9
