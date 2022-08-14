@@ -1,0 +1,9 @@
+# собирать docker образ с заданном тегом
+sborka-node - bash command
+apt install docker.io
+apt install git
+git clone
+dockerfile 
+docker build -t sborka-image . 
+
+
