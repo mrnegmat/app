@@ -5,5 +5,6 @@ apt install git
 git clone
 dockerfile 
 docker build -t sborka-image . 
+sasaS
 
 
