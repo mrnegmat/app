@@ -2,10 +2,12 @@ version: "2"
 
 services:
   nexus:
-    image: "sonatype/nexus3"
+    image: sonatype/nexus
     volumes:
-      - "./data:/nexus-data"
+      - "nexus-data:/sonatype-work"
     ports:
       - "8081:8081"
-      - "8123:8123"
+  
+volumes:
+  nexus-data: {}
   
