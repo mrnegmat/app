@@ -1,12 +1,11 @@
----
-version: "3.3"
+version: "2"
+
 services:
   nexus:
-    restart: always
-    container_name: "nexus3_registry"
-    image: sonatype/nexus3
-    ports:
-      - '8081:8081'
-      - '8082:8082'
+    image: "sonatype/nexus3"
     volumes:
-      - './nexus:/nexus-data'
+      - "./data:/nexus-data"
+    ports:
+      - "8081:8081"
+      - "8123:8123"
+  
