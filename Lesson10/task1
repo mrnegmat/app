@@ -1,10 +1,26 @@
 # собирать docker образ с заданном тегом
-sborka-node - bash command
-apt install docker.io
-apt install git
-git clone
-dockerfile 
-docker build -t sborka-image . 
-sasaS
+#sborka-node - bash command
+apt update
+apt install docker.io -y
+apt install git -y
+git clone https://github.com/testgit4me/app.git
+cd app
+docker build -t mydockerimage .
+docker images
+
+--------------------------------
+
+# Зарварачиваем Nexus
+---
+version: '2'
+services:
+nexus:
+image: nexus3:latest
+ports:
+- "8081:8081"
+- "8123:8123"
+volumes:
+- ./data:/nexus-data
+
 
 
