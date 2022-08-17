@@ -1,11 +1,11 @@
-version: "2"
-
+---
+version: "3.3"
 services:
   nexus:
-    image: "sonatype/nexus3"
-    volumes:
-      - "./data:/nexus-data"
+    container_name: "nexus3_registry"
+    image: sonatype/nexus3
     ports:
-      - "8081:8081"
-      - "8123:8123"
-  
+      - '8081:8081'
+      - '8082:8082'
+    volumes:
+      - './nexus:/nexus-data'
