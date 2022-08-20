@@ -1,0 +1,68 @@
+master node:
+install jenkins
+configured gentlemens tools on jenkins platform
+
+in Jenkins platform:
+http://13.233.93.80:8080
+
+created user deployer
+manage credentiols
+username: deployer
+password: deployer
+description: prod
+
+configuretools:
+add maven feature
+name: m3
+
+Plugin Manager:
+install: deploy to container
+
+Create new task:
+Freestyle project
+
+manage code section:
+git: https://github.com/testgit4me/origon777.git
+
+сборка:
+maven version: m3
+aim: package
+
+After build:
+Deploy war/ear to a container
+WAR/EAR files: _/_.war
+content path: mywebapp1
+container: deployer/...(prod)
+tomcat URL: http://3.108.8.89:8080/
+then save
+
+проверка:
+http://3.108.8.89:8080/mywebapp1/
+
+2-node:
+apt update
+installed tomcat tomcat9
+apt install tomcat9 tomcat9-admin -y
+
+created user deployer on tomcat file & restarted tomcat service
+nano etc/tomcat9/tomcat-users.xml
+<role rolename="manager-gui" />
+<role rolename="manager-script" />
+<user username="deployer" password="deployer" roles="manager-gui, manager-script" />
+service tomcat9 restart
+
+3.108.8.89:8080/manager
+username: deployer
+password: deployer
+
+Github part:
+import boxfuse https://github.com/boxfuse/boxfuse-sample-java-war-hello.git into my github local repository changing name
+
+WEB-HOOK is used to automate the process of sending websait changes/updates to jenkins once commit is done via github:
+Settings: webhooks
+payload url: http://43.205.195.75:8080/github-webhook (jenkins address is inserted)
+content type: application/json
+add webhook
+
+in jenkins tasks:
+Build triggers: enable hook trigger for GITscm polling
