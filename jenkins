@@ -1,0 +1,12 @@
+apt update
+apt install docker -y
+apt install docker-compose -y
+apt install git -y
+git clone https://github.com/testgit4me/app.git
+cd app
+docker build -t bfapp1 .
+docker images
+docker login -u admin -p 123qwe 43.205.118.162:8123
+docker tag bfapp1 43.205.118.162:8123/bfapp1
+docker push 43.205.118.162:8123/bfapp1
+
