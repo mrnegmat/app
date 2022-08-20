@@ -11,9 +11,9 @@ volumes:
   nexus-data: {}
 
 # https://www.youtube.com/watch?v=2sBIT3dOTuw
-# docker exec -it ubuntu_nexus_1 bash cat /nexus-data/admin.password
+# docker exec -it ubuntu_nexus_1 bash 
+# cat /nexus-data/admin.password
 
 
 
 
-43.205.118.162:8123/appx:3
