@@ -1,12 +1,37 @@
+#job-compile/push app with parametrised values
 apt update
 apt install docker -y
 apt install docker-compose -y
 apt install git -y
 git clone https://github.com/testgit4me/app.git
 cd app
-docker build -t bfapp1 .
+docker build -t bfapp1:$version .
 docker images
+cp daemon.json /etc/docker/daemon.json
+service docker restart
 docker login -u admin -p 123qwe 43.205.118.162:8123
-docker tag bfapp1 43.205.118.162:8123/bfapp1
-docker push 43.205.118.162:8123/bfapp1
+docker tag bfapp1:$version 43.205.118.162:8123/bfapp1:$version
+docker images
+docker push 43.205.118.162:8123/bfapp1:$version
+docker images
+
+#---------------------------------------------
+
+#job-pull/start app with parametrised values
+apt update
+apt install docker -y
+apt install docker-compose -y
+apt install git -y
+git clone https://github.com/testgit4me/app.git
+cd app
+cp daemon.json /etc/docker/daemon.json
+service docker restart
+docker login -u admin -p 123qwe 43.205.118.162:8123
+docker pull 43.205.118.162:8123/bfapp1:$version
+docker images
+docker run -d -p 5000:8080 43.205.118.162:8123/bfapp1:$version
+docker ps
+#http://13.233.93.80:5000/hello-1.0/
+
+
 
