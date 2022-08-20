@@ -1,4 +1,5 @@
 #job-compile/push app with parametrised values
+
 apt update
 apt install docker -y
 apt install docker-compose -y
@@ -18,6 +19,7 @@ docker images
 #---------------------------------------------
 
 #job-pull/start app with parametrised values
+
 apt update
 apt install docker -y
 apt install docker-compose -y
@@ -31,7 +33,5 @@ docker pull 43.205.118.162:8123/qwertyapp:$version
 docker images
 docker run -d -p 5000:8080 43.205.118.162:8123/qwertyapp:$version
 docker ps
+
 #http://13.233.93.80:5000/hello-1.0/
-
-
-
