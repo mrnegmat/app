@@ -6,7 +6,7 @@
       region: '{{ us-east-1 }}'
   tasks:
     - name: Install first node
-      amazon.aws.ec2_instance:
+      aws.ec2:
         key_name: "mykey777 "
         image_id: "ami-006d3995d3a6b963b"
         instance_type: t2.micro
