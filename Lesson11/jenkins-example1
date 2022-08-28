@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    tools {
+        maven "m3"
+    }
+
+    stages {
+        stage ('git') {
+            steps {
+                git 'https://github.com/testgit4me/origin555.git'
+            }
+        }
+        stage ('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+        stage ('deploy') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: 'c6f42f16-df55-4f20-b46f-ca0cb628a17d', path: '', url: 'http://52.66.228.137:8080/')], contextPath: 'mywebapp2', war: '**/*.war'
+            }
+        }
+    }
+}
+

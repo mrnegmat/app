@@ -1,10 +1,11 @@
 #job-compile/push app with parametrised values
+#node1, i have installed ssh connection from jenkins machine to node1 machine
 
 apt update
 apt install docker -y
 apt install docker-compose -y
 apt install git -y
-git clone https://github.com/testgit4me/app.git
+git clone https://github.com/testgit4me/app.git (to get Dockerfile)
 cd app
 docker build -t qwertyapp:$version .
 docker images
@@ -16,9 +17,11 @@ docker images
 docker push 3.109.182.124:8123/qwertyapp:$version
 docker images
 
+#3.109.182.124:8123 is nexus IP/Port details
 #---------------------------------------------
 
 #job-pull/start app with parametrised values
+#node2, i have installed ssh connection from jenkins machine to node2 machine
 
 apt update
 apt install docker -y
@@ -34,4 +37,4 @@ docker images
 docker run -d -p 5000:8080 3.109.182.124:8123/qwertyapp:$version
 docker ps
 
-#http://3.109.182.124:5000/hello-1.0/
+#http://3.109.182.124:5000/hello-1.0/ -> belongs to node2

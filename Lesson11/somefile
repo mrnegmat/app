@@ -1,0 +1,37 @@
+Pipeline:
+
+Agent image:
+FROM tomcat:9.0.65-jdk11-temurin
+RUN apt-get update && apt-get install -y maven git 
+
+Stages
+
+GIT (copy java app)
+
+Build project (java app)
+
+Build prod image and push to nexus
+
+pull docker image and run on node2
+
+Дженкинс должен пулить образ, в нем собирается артефакт и образ, он пушится в  реджистри и он же пулится на продовую ноду
+
+Да там то как раз просто, бросаешь /var/run/docker.socks из хоста на контейнер и там оснастка начинает работать.
+
+Я в плане как их прописать, а оказалось всё просто 
+args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+sh 'docker login 84.201.157.24:8123 --username  --password
+
+pipeline {
+    agent {
+        docker {
+            image '84.201.157.24:8123/jenkins-maven'
+            args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+
+Спасибо, помогло!!! имидж сбилдился
+ docker build -t 84.201.177.64:8123/prod_dind:v1.0 -f myboxfuse/DockerProd .
+Sending build context to Docker daemon  11.37MB
+Step 1/4 : FROM tomcat:8.5.82-jre8-temurin-focal
+и т.д.
+
+
