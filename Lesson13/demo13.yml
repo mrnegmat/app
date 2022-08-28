@@ -1,6 +1,7 @@
 - hosts: localhost
+  gather_facts: False
   module_defaults:
-    group/aws:
+    aws:
       aws_access_key: '{{ AKIAV5PSLITPH5FL2N2Q }}'
       aws_secret_key: '{{ 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 }}'
       region: '{{ us-east-1 }}'
