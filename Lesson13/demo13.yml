@@ -1,14 +1,12 @@
 - hosts: localhost
+  connection: local
   gather_facts: False
-  module_defaults:
-    aws:
-      aws_access_key: '{{ AKIAV5PSLITPH5FL2N2Q }}'
-      aws_secret_key: '{{ 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 }}'
-      region: '{{ us-east-1 }}'
   tasks:
     - ec2:
         key_name: "mykey777 "
         image_id: "ami-006d3995d3a6b963b"
         instance_type: t2.micro
         security_group: MySecGroup777
+        count: 1
+        region: us-east-1
       register: result
