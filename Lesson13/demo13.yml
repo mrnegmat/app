@@ -1,12 +1,14 @@
-- hosts: localhost
-  connection: local
-  gather_facts: False
-  tasks:
-    - ec2:
-        key_name: mykey777
-        image: ami-006d3995d3a6b963b
-        instance_type: t2.micro
-        security_group: MySecGroup777
-        count: 1
-        region: us-east-1
-      register: result
+---
+ - name: Working with AWS EC2 Instance
+   hosts: localhost
+   connection: local
+   gather_facts: false
+   tasks:
+     - name: Create ec2 instance
+       ec2:
+         instance_type: t2.micro
+         image: ami-006d3995d3a6b963b
+         count: 1
+         key_name: mykey777
+         group: allow-all
+         region: ap-south-1
