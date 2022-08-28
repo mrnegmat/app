@@ -1,4 +1,4 @@
-master node:
+Jenkins node:
 install jenkins
 configured gentlemens tools on jenkins platform
 
@@ -24,7 +24,7 @@ Freestyle project
 manage code section:
 git: https://github.com/testgit4me/origon777.git
 
-сборка:
+Build:
 maven version: m3
 aim: package
 
@@ -66,3 +66,59 @@ add webhook
 
 in jenkins tasks:
 Build triggers: enable hook trigger for GITscm polling
+
+!-------------------------------------------------------------------------------------------------------------!
+
+Pipeline - это описания процесс работы по стадиям именно доплоя. Он реализует работу инфраструктура как код
+
+2-job with Pipelines:
+
+newpipe1: pipeline
+Pipeline section/script:
+pipeline {
+agent any
+
+    stages {
+        stage ('git clone') {
+            steps {
+                echo 'git clone'
+            }
+        }
+
+        stage ('build') {
+            steps {
+                echo 'build'
+            }
+        }
+
+        stage ('deploy') {
+            steps {
+                echo 'deploy'
+            }
+        }
+    }
+
+}
+
+newpipe2:pipeline
+pipeline script:
+(pipeline syntex)
+
+pipeline {
+    agent {
+        image 'nexus:8123/270822app'
+    }
+    stages {
+        stage ('docker image') {                    
+            steps {
+                git 'https://github.com/testgit4me/origin555.git'
+                sh 'mvn package'
+
+                #make docker image
+
+                #push docker image
+                
+            }
+        }               
+    }
+}

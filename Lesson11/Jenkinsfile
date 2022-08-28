@@ -1,0 +1,21 @@
+pipeline {
+    agent none
+    stages {
+        stage ('docker image') {      
+            agent {
+                docker {
+                 args '-u admin -v /var/run/docker.sock:/var/run/docker.sock'
+                 image '13.232.114.98:8123/270822app'
+                 registryCredentialsId '73a0ef24-8198-4c48-a4a1-96fdc4e9c236'
+                 registryUrl "http://13.232.114.98:8123"
+                 
+                }
+            }
+            
+            steps {
+                 sh 'https://github.com/testgit4me/origin555.git /opt/app' 
+                 sh 'mvn package -f /opt/app'
+            }
+        }
+    }
+}
