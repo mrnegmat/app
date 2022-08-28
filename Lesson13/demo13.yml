@@ -4,7 +4,7 @@
   tasks:
     - ec2:
         key_name: mykey777
-        image_id: ami-006d3995d3a6b963b
+        image: ami-006d3995d3a6b963b
         instance_type: t2.micro
         security_group: MySecGroup777
         count: 1
