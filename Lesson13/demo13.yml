@@ -2,7 +2,7 @@
   connection: local
   gather_facts: False
   tasks:
-    - ec2:
+    - amazon.aws.ec2_instance:
         key_name: "mykey777 "
         image_id: "ami-006d3995d3a6b963b"
         instance_type: t2.micro
